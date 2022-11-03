@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Adventure>
+
+@{
+    ViewData["Title"] = "Pokemon Encounter";
+}
+watchout! pokemon incoming!
+<br />
+<br />
+<table class="table">
+    <tr>
+        <th>Pokédex Number</th>
+        <th>National Number</th>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Type</th>
+    </tr>
+
+    @foreach (var adventure in Model)
+    {
+        <tr>
+            <td>@adventure.DexNumber</td>
+            <td>@adventure.NatNumber</td>
+            <td>@adventure.Name</td>
+            <td>@adventure.TypeOne</td>
+            <td>@adventure.TypeTwo</td>
+        </tr>
+    }
+</table>

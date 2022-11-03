@@ -1,0 +1,89 @@
+﻿@using Pokemon_Random_Battle_Sim.Models;
+
+@model IEnumerable<Party>
+@{
+    ViewData["Title"] = "Party";
+}
+
+
+<h1>Your Party</h1>
+
+<div">
+    <p>Here you can view your current party!</p>
+    <p>
+        Previous teams from past playthroughs may be loaded in, click the button and we will generate a random team for you!
+        <br />
+        <button><a href="Party/ManageParty">Assemble Team!</a></button>
+    </p>
+
+    <table class="table">
+        <tr>
+            <th>Party Member Number</th>
+            <th>Pokédex Number</th>
+            <th>National Number</th>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Type</th>
+            <th>HP</th>
+            <th>Attack</th>
+            <th>Defence</th>
+        </tr>
+
+    @foreach (var party in Model)
+    {
+            <tr>
+                <td>@party.idParty</td>
+                <td>@party.DexNumber</td>
+                <td>@party.NatNumber</td>
+                <td>@party.Name</td>
+                <td>@party.TypeOne</td>
+                <td>@party.TypeTwo</td>
+                <td>@party.HP</td>
+                <td>@party.Attack</td>
+                <td>@party.Defence</td>
+            </tr>
+    }
+    </table>
+    </div>
+    <div>
+        <br />
+        <br />
+
+        <center>
+            <h5>Reffer to this table reguarding your battles</h5>
+            <p>
+                I would suggest opening this image in another tab.
+                <br />
+                <a href="https://nchencs.neocities.org/gen1typechart.png">
+                    <img src="https://nchencs.neocities.org/gen1typechart.png" alt="Type Matchups" style="width:500px;height:370px;">
+                </a>
+            </p>
+            <br />
+            You will read this table by locating the <strong>attacking</strong> pokemon's type on the <strong>left</strong> side,
+            <br />
+            then the <strong>defending</strong> pokemon's type will be from the <strong>top</strong>.
+            <br />
+            Where they meet on the table will represent the buff (or debuff) the <strong>attacking pokemon will recieve</strong> upon impact.
+            <br />
+            <br />
+            *************************
+            <br />
+            <br />
+            - 1x attack will be a normal attack, where neither pokemon has the advantage or disadvantage.
+            <br />
+            - 2x attack will mean the attack pokemon is super effective! Dealing double the normal amount of damage!
+            <br />
+            - .5x attack will deal only half of the attack power, because the attacker is not very effective...
+            <br />
+            - 0x attack means you deal no damage! The attacker is completly ineffective against the defending pokemon!
+            <br />
+            <br />
+            In addition to this table, there are some pokemon who are <i>duel type</i>.
+            <br />
+            You may want to Google those specific pokemon and their weakness, but as far as this game is conserned we will only be using the predominent type to attack.
+            <br />
+            For example, if you have a Charizard (who is fire and flying,) Charizard will only be attacking with a fire move!
+            <br />
+            But will still take double damage to an electric move!
+        </center>
+    </div>

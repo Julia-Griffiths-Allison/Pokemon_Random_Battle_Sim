@@ -1,0 +1,33 @@
+﻿@{
+    ViewData["Title"] = "Pokedex";
+}
+@model IEnumerable<Pokemon>
+
+<h2>PokéDex</h2>
+<table class="table">
+    <tr>
+        <th>Pokédex Number</th>
+        <th>National Number</th>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Type</th>
+        <th>HP</th>
+        <th>Attack</th>
+        <th>Defence</th>
+    </tr>
+
+@foreach (var pokemon in Model)
+    {
+        <tr>
+            <td>@pokemon.DexNumber</td>
+            <td>@pokemon.NatNumber</td>
+            <td>@pokemon.Name</td>
+            <td>@pokemon.TypeOne</td>
+            <td>@pokemon.TypeTwo</td>
+            <td>@pokemon.HP</td>
+            <td>@pokemon.Attack</td>
+            <td>@pokemon.Defence</td>
+        </tr>
+    }
+
+</table>
