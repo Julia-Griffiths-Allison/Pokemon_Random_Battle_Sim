@@ -46,6 +46,7 @@ namespace Pokemon_Random_Battle_Sim.Repos
                     $"IsSecondEvo = '{item.IsSecondEvo}', " +
                     $"IsFinalEvo = '{item.IsFinalEvo}', " +
                     $"HP = '{item.HP}', " +
+                    $"CurrentHP = '{item.HP * 40}', " +
                     $"Attack = '{item.Attack}', " +
                     $"Defence = '{item.Defence}' " +
                     $"Where idParty = {id};");

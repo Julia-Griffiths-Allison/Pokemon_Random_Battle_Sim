@@ -25,5 +25,10 @@ namespace Pokemon_Random_Battle_Sim.Controllers
             var battle = _repo.DisplayNewTeam();
             return View(battle);
         }
+        //public IActionResult Attacking()
+        //{
+        //    var attack = _repo.AttackSequence();
+        //    return View("TeamBattle");
+        //}
     }
 }

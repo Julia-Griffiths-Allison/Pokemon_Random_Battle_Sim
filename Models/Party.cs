@@ -15,6 +15,7 @@
         public int IsSecondEvo { get; set; }
         public int IsFinalEvo { get; set; }
         public int HP { get; set; }
+        public int CurrentHP { get; set; }
         public int Attack { get; set; }
         public int Defence { get; set; }
     }

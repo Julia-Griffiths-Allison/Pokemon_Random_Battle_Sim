@@ -1,9 +1,9 @@
-﻿@model IEnumerable<Adventure>
+﻿@model ViewTeams
 
 @{
     ViewData["Title"] = "Team Battle!";
 }
-get ready...
+Your current party
 <br />
 <br />
 <table class="table">
@@ -14,9 +14,48 @@ get ready...
         <th>Name</th>
         <th>Type</th>
         <th>Type</th>
+        <th>HP</th>
+        <th>Current HP</th>
+        <th>Attack</th>
+        <th>Defence</th>
     </tr>
 
-    @foreach (var adventure in Model)
+    @foreach (var party in Model.Parties)
+    {
+        <tr>
+            <td>@party.idParty</td>
+            <td>@party.DexNumber</td>
+            <td>@party.NatNumber</td>
+            <td>@party.Name</td>
+            <td>@party.TypeOne</td>
+            <td>@party.TypeTwo</td>
+            <td>@party.HP</td>
+            <td>@party.CurrentHP</td>
+            <td>@party.Attack</td>
+            <td>@party.Defence</td>
+        </tr>
+    }
+    <br />
+    @*<button><a href="#">Attack!</a></button>*@
+    <br />
+    <br />
+    <br />
+    Enemy's lineup
+    <br />
+    <br />
+<table class="table">
+    <tr>
+        <th>Party Member Number</th>
+        <th>Pokédex Number</th>
+        <th>National Number</th>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Type</th>
+        <th>HP</th>
+        <th>Current HP</th>
+    </tr>
+
+    @foreach (var adventure in Model.Adventures)
     {
         <tr>
             <td>@adventure.idNPCParty</td>
@@ -25,6 +64,8 @@ get ready...
             <td>@adventure.Name</td>
             <td>@adventure.TypeOne</td>
             <td>@adventure.TypeTwo</td>
+            <td>@adventure.HP</td>
+            <td>@adventure.CurrentHP</td>
         </tr>
     }
 </table>

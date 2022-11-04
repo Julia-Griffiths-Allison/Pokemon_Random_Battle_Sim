@@ -8,9 +8,11 @@ namespace Pokemon_Random_Battle_Sim.Repos
     public class AdventureRepo : IAdventureRepo
     {
         private readonly IDbConnection _conn;
-        public AdventureRepo(IDbConnection conn)
+        private readonly IPartyRepo _repo;
+        public AdventureRepo(IDbConnection conn, IPartyRepo repo)
         {
             _conn = conn;
+            _repo = repo;
         }
         public List<int> GetSixRandomNumber()
         {
@@ -42,20 +44,55 @@ namespace Pokemon_Random_Battle_Sim.Repos
                     $"IsSecondEvo = '{item.IsSecondEvo}', " +
                     $"IsFinalEvo = '{item.IsFinalEvo}', " +
                     $"HP = '{item.HP}', " +
+                    $"CurrentHP = '{item.HP * 40}', " +
                     $"Attack = '{item.Attack}', " +
                     $"Defence = '{item.Defence}' " +
                     $"Where idNPCParty = {id};");
                 id++;
             }
         }
-        public IEnumerable<Adventure> DisplayNewTeam()
+        public ViewTeams DisplayNewTeam()
         {
-            return _conn.Query<Adventure>("Select * from npc_party;");
+            var teamA = new ViewTeams();
+            teamA.Adventures = _conn.Query<Adventure>("Select * from npc_party;");
+            teamA.Parties = _repo.DisplayNewTeam();
+            return teamA;
         }
-        
+
         public IEnumerable<Adventure> DisplayEncounter()
         {
             return _conn.Query<Adventure>("Select * from npc_party Limit 1;");
         }
+        //public int FireSpecialAttack() --usable, but not finished
+        //{
+        //    var pokemon = new Adventure();
+        //    var fireAttack = pokemon.Attack * 20;
+
+        //    if (pokemon.TypeOne == "Grass" || pokemon.TypeTwo == "Grass" || pokemon.TypeOne == "Ice" || pokemon.TypeTwo == "Ice" || pokemon.TypeOne == "Bug" || pokemon.TypeTwo == "Bug" || pokemon.TypeOne == "Steel" || pokemon.TypeTwo == "Steel")
+        //    {
+        //        return fireAttack * 2;
+        //    }
+        //    else
+        //    {
+        //        return fireAttack;
+        //    }
+        //    //var defence = pokemon.Defence * 10;
+        //    //var hpBaseValue = pokemon.HP * 40;
+        //    //var hpFormula = defence - fireAttack;
+        //    //var currentHP = 0;
+        //    //currentHP = hpBaseValue;
+        //}
+        //public int AttackSequence()
+        //{
+        //    var pokemon = new Adventure();
+
+        //    var attack = pokemon.Attack * 20;
+        //    var defence = pokemon.Defence * 10;
+        //    var currentHP = pokemon.CurrentHP;
+        //    var formula = defence - attack;
+        //    currentHP = currentHP + formula;
+        //    return currentHP;
+            
+        //}
     }
 }

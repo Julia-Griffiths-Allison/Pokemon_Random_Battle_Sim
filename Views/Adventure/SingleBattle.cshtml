@@ -13,6 +13,8 @@ watchout! pokemon incoming!
         <th>Name</th>
         <th>Type</th>
         <th>Type</th>
+        <th>HP</th>
+        <th>Current HP</th>
     </tr>
 
     @foreach (var adventure in Model)
@@ -23,6 +25,8 @@ watchout! pokemon incoming!
             <td>@adventure.Name</td>
             <td>@adventure.TypeOne</td>
             <td>@adventure.TypeTwo</td>
+            <td>@adventure.HP</td>
+            <td>@adventure.CurrentHP</td>
         </tr>
     }
 </table>

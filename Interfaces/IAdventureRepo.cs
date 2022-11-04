@@ -6,7 +6,10 @@ namespace Pokemon_Random_Battle_Sim.Interfaces
     {
         public List<int> GetSixRandomNumber();
         public void CreateNPCTeam();
-        public IEnumerable<Adventure> DisplayNewTeam();
+        public ViewTeams DisplayNewTeam();
         public IEnumerable<Adventure> DisplayEncounter();
+
+       
+        //public int AttackSequence();
     }
 }
